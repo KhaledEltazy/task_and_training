@@ -3,11 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.android.taskandtraining.fragment.MainFragment"
+        android:id="@+id/emptyFragment"
+        android:name="com.android.taskandtraining.fragment.EmptySelectiveFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_empty_selective" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.android.taskandtraining.fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_threeSelectiveFragment"
+            app:destination="@id/threeSelectiveFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_twoSelectiveFragment"
+            app:destination="@id/twoSelectiveFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_emptyFragment"
+            app:destination="@id/emptyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/threeSelectiveFragment"
+        android:name="com.android.taskandtraining.fragment.ThreeSelectiveFragment"
+        android:label="fragment_three_selective"
+        tools:layout="@layout/fragment_three_selective" />
+    <fragment
+        android:id="@+id/twoSelectiveFragment"
+        android:name="com.android.taskandtraining.fragment.TwoSelectiveFragment"
+        android:label="fragment_two_selective"
+        tools:layout="@layout/fragment_two_selective" />
 </navigation>
