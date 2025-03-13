@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.taskandtraining.R
 import com.android.taskandtraining.databinding.ItemsBinding
+import javax.inject.Inject
 
 class MyAdapter(val list: List<String>, val add: Boolean, val delete: Boolean,val fav: Boolean) :
     RecyclerView.Adapter<MyAdapter.MyAdapterViewHolder>() {
