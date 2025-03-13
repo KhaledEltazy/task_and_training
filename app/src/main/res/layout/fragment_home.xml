@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.HomeFragment"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <Button
+        android:id="@+id/threeSelectiveBtn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="add,delete &amp; fav Buttons"
+        android:textSize="18sp"
+        android:layout_margin="4dp"
+        />
+
+    <Button
+        android:id="@+id/twoSelectiveBtn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="add &amp; delete Buttons"
+        android:textSize="18sp"
+        android:layout_margin="4dp"
+        />
+
+    <Button
+        android:id="@+id/emptySelectiveBtn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="No Buttons"
+        android:textSize="18sp"
+        android:layout_margin="4dp"
+        />
+</LinearLayout>
