@@ -10,11 +10,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.taskandtraining.adapter.MyAdapter
 import com.android.taskandtraining.databinding.FragmentThreeSelectiveBinding
 import com.android.taskandtraining.single_responsibility.Countries
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ThreeSelectiveFragment : Fragment() {
     lateinit var binding : FragmentThreeSelectiveBinding
+
+
+    @Inject
     lateinit var myAdapter : MyAdapter
-    val countries = Countries()
+
+    @Inject
+    lateinit var countries : Countries
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,7 +55,7 @@ class ThreeSelectiveFragment : Fragment() {
     }
 
     private fun setRecyclerView(list: List<String>) {
-        myAdapter = MyAdapter(list,true,true,true)
+        myAdapter.setData(list,true,true,true)
         myAdapter.itemSelected = { item, view ->
             Toast.makeText(view.context, "Clicked on $item", Toast.LENGTH_SHORT).show()
         }
