@@ -12,14 +12,25 @@ import com.android.taskandtraining.databinding.FragmentMainBinding
 import com.android.taskandtraining.single_responsibility.Cities
 import com.android.taskandtraining.single_responsibility.Continents
 import com.android.taskandtraining.single_responsibility.Countries
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
     lateinit var binding : FragmentMainBinding
-    lateinit var myAdapter : MyAdapter
-    val countries = Countries()
-    val cities = Cities()
-    val continents = Continents()
+
+    @Inject
+    lateinit var myAdapter: MyAdapter
+
+    @Inject
+    lateinit var countries : Countries
+
+    @Inject
+    lateinit var cities : Cities
+
+    @Inject
+    lateinit var continents : Continents
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,7 +59,7 @@ class MainFragment : Fragment() {
     }
 
     private fun setRecyclerView(list: List<String>) {
-        myAdapter = MyAdapter(list)
+        myAdapter.setList(list)
         myAdapter.itemSelected = { item, view ->
             Toast.makeText(view.context, "Clicked on $item", Toast.LENGTH_SHORT).show()
         }

@@ -7,9 +7,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.taskandtraining.R
 import com.android.taskandtraining.databinding.ItemsBinding
+import dagger.hilt.android.scopes.ActivityScoped
+import javax.inject.Inject
 
-class MyAdapter(val list : List<String>) : RecyclerView.Adapter<MyAdapter.MyAdapterViewHolder>() {
+@ActivityScoped
+class MyAdapter @Inject constructor() : RecyclerView.Adapter<MyAdapter.MyAdapterViewHolder>() {
+    private var list : List<String> = emptyList()
     var selectedItem = -1
+
+    fun setList (newList : List<String>){
+        list = newList
+        notifyDataSetChanged()
+    }
 
     class MyAdapterViewHolder(private val binding : ItemsBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: String, isSelected: Boolean) {
