@@ -7,10 +7,25 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.taskandtraining.R
 import com.android.taskandtraining.databinding.ItemsBinding
+import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject
 
-class MyAdapter(val list: List<String>, val add: Boolean, val delete: Boolean,val fav: Boolean) :
+@ActivityScoped
+class MyAdapter @Inject constructor() :
     RecyclerView.Adapter<MyAdapter.MyAdapterViewHolder>() {
+    private var list : List<String> = emptyList()
+    private var add : Boolean? = null
+    private var delete : Boolean? = null
+    private var fav : Boolean? = null
+
+    fun setData(newList : List<String>, checkAdd : Boolean, checkDelete : Boolean, checkFav : Boolean){
+        list = newList
+        add = checkAdd
+        delete = checkDelete
+        fav = checkFav
+        notifyDataSetChanged()
+    }
+
     var selectedItem = -1
     var itemSelected: ((String, View) -> Unit)? = null
     var addBtnSelected: ((View) -> Unit)? = null
@@ -65,20 +80,21 @@ class MyAdapter(val list: List<String>, val add: Boolean, val delete: Boolean,va
                 itemSelected?.invoke(currentItem, it)
             }
         }
+
         holder.binding.apply {
-            if (add) {
+            if (add == true) {
                 addBtn.setOnClickListener {
                     addBtnSelected?.invoke(it)
                 }
             } else addBtn.visibility = View.GONE
 
-            if (delete) {
+            if (delete == true) {
                 deleteBtn.setOnClickListener {
                     deleteBtnSelected?.invoke(it)
                 }
             } else deleteBtn.visibility = View.GONE
 
-            if (fav) {
+            if (fav == true) {
                 favBtn.setOnClickListener {
                     favBtnSelected?.invoke(it)
                 }
