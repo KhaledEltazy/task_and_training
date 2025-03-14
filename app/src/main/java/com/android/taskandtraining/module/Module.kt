@@ -11,7 +11,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-class MyModule {
+object Module {
     @Provides
     fun provideCountries() = Countries()
 
